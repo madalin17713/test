@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Citire Aura & Energie - Descoperă-ți Aura</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="logo">AuraScan</div>
+            <div class="nav-links">
+                <a href="#despre" class="nav-link">Despre</a>
+                <a href="#cum-functioneaza" class="nav-link">Cum funcționează</a>
+                <a href="#testimoniale" class="nav-link">Testimoniale</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+            <div class="hamburger">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 data-aos="fade-up">Descoperă-ți <span class="highlight">Aura</span> Azi</h1>
+                <p data-aos="fade-up" data-aos-delay="100">Tehnologie avansată pentru analiza energiei personale</p>
+                <div class="cta-buttons" data-aos="fade-up" data-aos-delay="200">
+                    <a href="#contact" class="btn btn-primary">Programează-te acum</a>
+                    <a href="#despre" class="btn btn-secondary">Află mai multe</a>
+                </div>
+            </div>
+            <div class="hero-image" data-aos="fade-left">
+                <img src="assets/hero-image.jpg" alt="Analiză Aura">
+            </div>
+        </div>
+    </section>
+
+    <!-- Despre Section -->
+    <section id="despre" class="about section">
+        <div class="container">
+            <div style="text-align: center;">
+            <h2 class="section-title" data-aos="fade-up">Despre Citirea Aurei</h2> </div>
+            <div class="about-content">
+                <div class="about-text" data-aos="fade-right">
+                    <h3>Fiecare dintre noi emană o energie unică care ne definește și ne influențează viața.</h3>
+                    <p>Prin tehnologia noastră avansată, putem analiza această energie pentru a oferi o înțelegere mai profundă a sinelui tău.</p>
+                    <div class="skills">
+                        <div class="skill">
+                            <div class="skill-info">
+                                <span>Analiza Aurei</span>
+                                <span>95%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        <div class="skill">
+                            <div class="skill-info">
+                                <span>Analiza Câmpurilor Energetice</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 85%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image" data-aos="fade-left">
+                    <div class="floating-image">
+                        <img src="assets/about-image.jpg" alt="About Me">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="cum-functioneaza" class="services">
+        <div class="container">
+            <div style="text-align: center;">
+            <h2 class="section-title" data-aos="fade-up">Cum funcționează</h2></div>
+            <div class="services-grid">
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Completează Formularul</h3>
+                    <p>Încarcă o fotografie clară și completează detaliile tale personale.</p>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-icon">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h3>Analiză Avansată</h3>
+                    <p>Sistemul nostru analizează energia ta folosind algoritmi avansați.</p>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Raport Personalizat</h3>
+                    <p>Primești un raport detaliat despre aura și câmpurile tale energetice.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="formular" class="portfolio">
+        <div class="container">
+            <div style="text-align: center;">
+            <h2 class="section-title" data-aos="fade-up">Completează Formularul</h2></div>
+            <div class="portfolio-grid">
+                <div class="portfolio-item" data-aos="zoom-in">
+                    <form id="auraForm" class="aura-form">
+                        <div class="form-group">
+                            <label for="nume">Nume</label>
+                            <input type="text" id="nume" name="nume" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="prenume">Prenume</label>
+                            <input type="text" id="prenume" name="prenume" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="dataNastere">Data nașterii</label>
+                            <input type="date" id="dataNastere" name="dataNastere" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="oraNastere">Ora nașterii</label>
+                            <input type="time" id="oraNastere" name="oraNastere" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="locNastere">Locul nașterii</label>
+                            <input type="text" id="locNastere" name="locNastere" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="intentie">Intenția ta (opțional)</label>
+                            <textarea id="intentie" name="intentie" rows="4" placeholder="Ex: Doresc să înțeleg cauza durerilor mele de cap recurente..."></textarea>
+                        </div>
+                        <div class="form-group file-upload">
+                            <label for="poza">Încarcă o poză clară</label>
+                            <div class="upload-area" id="dropArea">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <p>Trage o poză aici sau <span>alege un fișier</span></p>
+                                <input type="file" id="poza" name="poza" accept="image/*" required>
+                            </div>
+                            <div id="preview"></div>
+                        </div>
+                        <div class="form-group checkbox-group">
+                            <input type="checkbox" id="gdpr" name="gdpr" required>
+                            <label for="gdpr">Sunt de acord cu prelucrarea datelor mele personale conform <a href="#">Politicii de Confidențialitate</a></label>
+                        </div>
+                        <button type="submit" class="submit-btn">Trimite Cererea</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimoniale" class="testimonials">
+        <div class="container">
+            <div style="text-align: center;">
+            <h2 class="section-title" data-aos="fade-up">Ce spun clienții noștri</h2></div>
+            <div class="testimonial-container">
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        <p>"Am fost uimită de acuratețea analizei! A confirmat ceea ce simțeam la nivel intuitiv și mi-a oferit claritate în ceea ce privește starea mea de sănătate."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">EM</div>
+                            <div class="author-info">
+                                <h4>Elena M.</h4>
+                                <span>Clinică de 3 ori</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        <p>"După ani de analize medicale fără răspunsuri, citirea aurei mele a evidențiat dezechilibrele care-mi cauzau problemele. Recomand cu încredere!"</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">AI</div>
+                            <div class="author-info">
+                                <h4>Andrei I.</h4>
+                                <span>Prima analiză</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <div style="text-align: center;">
+            <h2 class="section-title" data-aos="fade-up">Contact</h2></div>
+            <div class="contact-content">
+                <div class="contact-info" data-aos="fade-right">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h3>Location</h3>
+                            <p>Bucharest, Romania</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h3>Email</h3>
+                            <p>contact@example.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h3>Phone</h3>
+                            <p>+40 712 345 678</p>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form" data-aos="fade-left">
+                    <div class="form-group">
+                        <input type="text" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" placeholder="Subject">
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="Your Message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="social-links">
+                <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+            </div>
+            <p class="copyright">&copy; 2025 AuraScan. A website designed and developed by MADMEDIA Development. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <a href="#" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS (Animate On Scroll)
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: false,
+            mirror: false
+        });
+        
+        // Hide preloader when page is fully loaded
+        window.addEventListener('load', function() {
+            const preloader = document.querySelector('.preloader');
+            if (preloader) {
+                preloader.style.opacity = '0';
+                preloader.style.visibility = 'hidden';
+                document.body.classList.remove('no-scroll');
+            }
+            AOS.refresh();
+        });
+
+        // Mobile Navigation Toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.querySelector('.hamburger');
+            const navLinks = document.querySelector('.nav-links');
+            const navItems = document.querySelectorAll('.nav-link');
+            
+            // Toggle mobile menu
+            if (hamburger && navLinks) {
+                hamburger.addEventListener('click', function() {
+                    this.classList.toggle('active');
+                    navLinks.classList.toggle('active');
+                    document.body.classList.toggle('no-scroll');
+                });
+            }
+            
+            // Close mobile menu when clicking on a nav link
+            navItems.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (hamburger && navLinks) {
+                        hamburger.classList.remove('active');
+                        navLinks.classList.remove('active');
+                        document.body.classList.remove('no-scroll');
+                    }
+                });
+            });
+        });
+
+        // Back to top button
+        const backToTopButton = document.querySelector('.back-to-top');
+        if (backToTopButton) {
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) {
+                    backToTopButton.classList.add('show');
+                } else {
+                    backToTopButton.classList.remove('show');
+                }
+            });
+
+            backToTopButton.addEventListener('click', (e) => {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+    </script>
+</body>
+</html>
