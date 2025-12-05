@@ -707,3 +707,45 @@ body {
     transform: none !important;
     transition: none !important;
 }
+
+/* Typing Animation */
+.typing-container {
+    min-height: 1.5em;
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+}
+
+.typing-container .cursor {
+    display: inline-block;
+    width: 2px;
+    background-color: var(--primary-color);
+    animation: blink 1s infinite;
+    margin-left: 2px;
+    vertical-align: middle;
+    height: 1.2em;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+#typing-text {
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 2px solid var(--primary-color);
+    animation: typing 3.5s steps(30, end), blink-caret 0.75s step-end infinite;
+    max-width: 100%;
+}
+
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: var(--primary-color); }
+}

@@ -41,7 +41,7 @@
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <h1 data-aos="fade-up">Descoperă-ți <span class="highlight">Aura</span> Azi</h1>
+                <h1 class="typing-container" data-aos="fade-up"><span id="typing-text"></span><span class="cursor">|</span></h1>
                 <p data-aos="fade-up" data-aos-delay="100">Tehnologie avansată pentru analiza energiei personale</p>
                 <div class="cta-buttons" data-aos="fade-up" data-aos-delay="200">
                     <a href="#contact" class="btn btn-primary">Programează-te acum</a>
@@ -490,6 +490,43 @@
                     reader.readAsDataURL(file);
                 }
             }
+        });
+
+        // Typing Animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const text = "Descoperă-ți ";
+            const highlightedText = "Aura";
+            const finalText = " Azi";
+            const typingText = document.getElementById('typing-text');
+            let i = 0;
+            let typingSpeed = 100; // milliseconds per character
+            
+            function typeWriter() {
+                if (i < text.length) {
+                    typingText.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, typingSpeed);
+                } else if (i === text.length) {
+                    // Add the highlighted text
+                    typingText.innerHTML += `<span class="highlight">${highlightedText}</span>`;
+                    i += highlightedText.length;
+                    setTimeout(typeWriter, typingSpeed * 2);
+                } else if (i < text.length + highlightedText.length + finalText.length) {
+                    // Add the rest of the text after the highlighted part
+                    const currentIndex = i - text.length - highlightedText.length;
+                    if (currentIndex < finalText.length) {
+                        typingText.innerHTML += finalText.charAt(currentIndex);
+                        i++;
+                        setTimeout(typeWriter, typingSpeed);
+                    }
+                } else {
+                    // Animation complete, remove the cursor
+                    document.querySelector('.cursor').style.display = 'none';
+                }
+            }
+            
+            // Start the typing animation after a short delay
+            setTimeout(typeWriter, 1000);
         });
     </script>
 </body>
