@@ -82,6 +82,99 @@ document.addEventListener('DOMContentLoaded', function() {
         lastScroll = currentScroll;
     });
     
+    // Image Upload Functionality
+    const fileInput = document.getElementById('poza');
+    const dropArea = document.getElementById('dropArea');
+    const preview = document.getElementById('preview');
+    const maxFileSize = 5 * 1024 * 1024; // 5MB
+    const allowedTypes = ['image/jpeg', 'image/png', 'image/jpg'];
+
+    // Handle file selection
+    fileInput.addEventListener('change', handleFiles);
+
+    // Prevent default drag behaviors
+    ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+        dropArea.addEventListener(eventName, preventDefaults, false);
+    });
+
+    // Highlight drop area when item is dragged over it
+    ['dragenter', 'dragover'].forEach(eventName => {
+        dropArea.addEventListener(eventName, highlight, false);
+    });
+
+    ['dragleave', 'drop'].forEach(eventName => {
+        dropArea.addEventListener(eventName, unhighlight, false);
+    });
+
+    // Handle dropped files
+    dropArea.addEventListener('drop', handleDrop, false);
+
+    function preventDefaults(e) {
+        e.preventDefault();
+        e.stopPropagation();
+    }
+
+    function highlight() {
+        dropArea.classList.add('highlight');
+    }
+
+    function unhighlight() {
+        dropArea.classList.remove('highlight');
+    }
+
+    function handleDrop(e) {
+        const dt = e.dataTransfer;
+        const files = dt.files;
+        handleFiles({ target: { files } });
+    }
+
+    function handleFiles(e) {
+        const files = e.target.files;
+        if (files.length > 0) {
+            const file = files[0];
+            
+            // Validate file type
+            if (!allowedTypes.includes(file.type)) {
+                alert('Te rog să încarci doar imagini (JPEG, JPG, PNG).');
+                return;
+            }
+            
+            // Validate file size
+            if (file.size > maxFileSize) {
+                alert('Fișierul este prea mare. Mărimea maximă permisă este de 5MB.');
+                return;
+            }
+            
+            // Create preview
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                preview.innerHTML = '';
+                const img = document.createElement('img');
+                img.src = e.target.result;
+                img.classList.add('preview-image');
+                
+                const removeBtn = document.createElement('button');
+                removeBtn.innerHTML = '&times;';
+                removeBtn.classList.add('remove-image');
+                removeBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    preview.innerHTML = '';
+                    fileInput.value = '';
+                });
+                
+                preview.appendChild(img);
+                preview.appendChild(removeBtn);
+                preview.style.display = 'block';
+            };
+            reader.readAsDataURL(file);
+        }
+    }
+
+    // Click on drop area to trigger file input
+    dropArea.addEventListener('click', () => {
+        fileInput.click();
+    });
+
     // Initialize AOS (Animate On Scroll)
     AOS.init({
         duration: 800,
@@ -112,31 +205,82 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // Form submission handling
-    const contactForm = document.querySelector('.contact-form');
+    const contactForm = document.getElementById('auraForm');
     if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
+        contactForm.addEventListener('submit', async function(e) {
             e.preventDefault();
             
-            // Get form data
-            const formData = new FormData(this);
-            const formValues = Object.fromEntries(formData.entries());
+            // Show loading state
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn.innerHTML;
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Se trimite...';
             
-            // Here you would typically send the form data to a server
-            console.log('Form submitted:', formValues);
-            
-            // Show success message
-            const successMessage = document.createElement('div');
-            successMessage.className = 'form-success';
-            successMessage.textContent = 'Thank you for your message! I will get back to you soon.';
-            contactForm.appendChild(successMessage);
-            
-            // Reset form
-            this.reset();
-            
-            // Remove success message after 5 seconds
-            setTimeout(() => {
-                successMessage.remove();
-            }, 5000);
+            try {
+                // Get form data
+                const formData = new FormData(this);
+                
+                // Send form data to server
+                const response = await fetch('send_email.php', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const result = await response.json();
+                
+                if (result.status === 'success') {
+                    // Show success message
+                    const successMessage = document.createElement('div');
+                    successMessage.className = 'form-success';
+                    successMessage.textContent = result.message || 'Mulțumim! Formularul a fost trimis cu succes.';
+                    this.reset();
+                    
+                    // Clear file preview
+                    const preview = document.getElementById('preview');
+                    if (preview) preview.innerHTML = '';
+                    
+                    // Reset drop area text
+                    const dropText = document.querySelector('.upload-area p');
+                    if (dropText) {
+                        dropText.innerHTML = 'Trage o poză aici sau <span>alege un fișier</span>';
+                    }
+                    
+                    // Insert success message before form
+                    this.parentNode.insertBefore(successMessage, this);
+                    
+                    // Scroll to success message
+                    successMessage.scrollIntoView({ behavior: 'smooth' });
+                    
+                    // Remove success message after 5 seconds
+                    setTimeout(() => {
+                        successMessage.remove();
+                    }, 5000);
+                } else {
+                    throw new Error(result.message || 'A apărut o eroare la trimiterea formularului.');
+                }
+            } catch (error) {
+                // Show error message
+                const errorMessage = document.createElement('div');
+                errorMessage.className = 'form-error';
+                errorMessage.textContent = error.message || 'A apărut o eroare la trimiterea formularului. Vă rugăm încercați din nou.';
+                
+                // Insert error message before form
+                this.parentNode.insertBefore(errorMessage, this);
+                
+                // Scroll to error message
+                errorMessage.scrollIntoView({ behavior: 'smooth' });
+                
+                // Remove error message after 5 seconds
+                setTimeout(() => {
+                    errorMessage.remove();
+                }, 5000);
+                
+                console.error('Form submission error:', error);
+            } finally {
+                // Reset button state
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalBtnText;
+            }
         });
     }
     

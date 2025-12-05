@@ -11,16 +11,20 @@
 </head>
 <body>
     <!-- Preloader -->
-    <div class="preloader">
+    <div class="preloader"> 
         <div class="loader"></div>
     </div>
 
     <!-- Header -->
     <header class="header">
         <nav class="navbar">
-            <div class="logo">AuraScan</div>
+            <div class="logo">
+                <img src="Logo.jpg" alt="AuraScan Logo" class="logo-img">
+                <span>AuraScan</span>
+            </div>
             <div class="nav-links">
-                <a href="#despre" class="nav-link">Despre</a>
+                <a href="#despre-mine" class="nav-link">Despre Mine</a>
+                <a href="#despre-aura" class="nav-link">Despre Aura</a>
                 <a href="#cum-functioneaza" class="nav-link">Cum funcționează</a>
                 <a href="#testimoniale" class="nav-link">Testimoniale</a>
                 <a href="#contact" class="nav-link">Contact</a>
@@ -41,17 +45,45 @@
                 <p data-aos="fade-up" data-aos-delay="100">Tehnologie avansată pentru analiza energiei personale</p>
                 <div class="cta-buttons" data-aos="fade-up" data-aos-delay="200">
                     <a href="#contact" class="btn btn-primary">Programează-te acum</a>
-                    <a href="#despre" class="btn btn-secondary">Află mai multe</a>
+                    <a href="#despre-noi" class="btn btn-secondary">Află mai multe</a>
                 </div>
             </div>
             <div class="hero-image" data-aos="fade-left">
-                <img src="assets/hero-image.jpg" alt="Analiză Aura">
+                <img src="Logo.jpg" alt="Analiză Aura" width="550px" height="550px">
+            </div>
+        </div>
+    </section>
+
+     <!-- Despre Section -->
+    <section id="despre-mine" class="about section">
+        <div class="container">
+            <div style="text-align: center;">
+            <h2 class="section-title" data-aos="fade-up">Despre Mine</h2> </div>
+            <div class="about-content">
+                <div class="about-text" data-aos="fade-right">
+                    <h3>Bună, eu sunt Anca, ghidul tau în lumea descoperirii Aurei și Energiei interioare.</h3>
+                    <h3>AnKaScan – Citește-ți energia. Ascultă-ți sufletul.</h3>
+                    <p>AnKaScan este un instrument intuitiv pentru explorarea și înțelegerea universului tău interior.</p>
+                    <p> Pornind de la o simplă fotografie, data nașterii și o intenție clară, îți ofer o interpretare blândă a informațiilor din aura ta, din chakre, meridiane, câmpurile subtile și memoria karmică.</p>
+                    <p> Ce este dezechilibrat? Ce ai lăsat în urmă și încă te ține pe loc? Unde strălucește lumina ta?</p>
+                    <p> Răspunsurile apar firesc, cu sensibilitate și grijă.</p>
+                    <p> AnKaScan nu reprezintă un act medical și nu oferă diagnostice. Este o oglindă a sufletului, un spațiu în care poți fi văzut, înțeles și susținut exact așa cum ești.</p>
+                       
+                    <p>✧ Pentru sufletele care simt că există ceva mai mult.</p>
+                    <p>✧ Pentru cei care percep, dar nu pot numi.</p>
+                    <p>✧ Pentru cei ce vor să se întoarcă acasă – în ei înșiși.</p>
+                </div>
+                <div class="about-image" data-aos="fade-left">
+                    <div class="floating-image">
+                        <img src="poza-anca.png" alt="About Me" width="250px" height="250px">
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Despre Section -->
-    <section id="despre" class="about section">
+    <section id="despre-aura" class="about section">
         <div class="container">
             <div style="text-align: center;">
             <h2 class="section-title" data-aos="fade-up">Despre Citirea Aurei</h2> </div>
@@ -82,7 +114,7 @@
                 </div>
                 <div class="about-image" data-aos="fade-left">
                     <div class="floating-image">
-                        <img src="assets/about-image.jpg" alt="About Me">
+                        <img src="img aura.jpg" alt="About Me">
                     </div>
                 </div>
             </div>
@@ -125,7 +157,7 @@
             <h2 class="section-title" data-aos="fade-up">Completează Formularul</h2></div>
             <div class="portfolio-grid">
                 <div class="portfolio-item" data-aos="zoom-in">
-                    <form id="auraForm" class="aura-form">
+                    <form id="auraForm" class="aura-form" action="send_email.php" method="POST" enctype="multipart/form-data">
                         <div class="form-group">
                             <label for="nume">Nume</label>
                             <input type="text" id="nume" name="nume" required>
@@ -154,11 +186,43 @@
                             <label for="poza">Încarcă o poză clară</label>
                             <div class="upload-area" id="dropArea">
                                 <i class="fas fa-cloud-upload-alt"></i>
-                                <p>Trage o poză aici sau <span>alege un fișier</span></p>
+                                <p>Trage o poză aici sau</p>
+                                <label for="poza" class="file-upload-btn">
+                                    <i class="fas fa-folder-open"></i> Alege un fișier
+                                </label>
                                 <input type="file" id="poza" name="poza" accept="image/*" required>
                             </div>
                             <div id="preview"></div>
                         </div>
+                        <style>
+                            .file-upload-btn {
+                                display: inline-block;
+                                padding: 10px 20px;
+                                background-color: #6c63ff;
+                                color: white;
+                                border-radius: 5px;
+                                cursor: pointer;
+                                margin-top: 10px;
+                                transition: all 0.3s ease;
+                                border: none;
+                                font-size: 14px;
+                                font-weight: 500;
+                            }
+                            .file-upload-btn:hover {
+                                background-color: #5753c9;
+                                transform: translateY(-2px);
+                                box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+                            }
+                            .file-upload-btn i {
+                                margin-right: 8px;
+                            }
+                            .upload-area p {
+                                margin-bottom: 10px;
+                            }
+                            #poza {
+                                display: none;
+                            }
+                        </style>
                         <div class="form-group checkbox-group">
                             <input type="checkbox" id="gdpr" name="gdpr" required>
                             <label for="gdpr">Sunt de acord cu prelucrarea datelor mele personale conform <a href="#">Politicii de Confidențialitate</a></label>
@@ -215,7 +279,7 @@
                         </div>
                         <div class="contact-text">
                             <h3>Location</h3>
-                            <p>Bucharest, Romania</p>
+                            <p>Arad, Romania</p>
                         </div>
                     </div>
                     <div class="contact-item">
@@ -233,25 +297,10 @@
                         </div>
                         <div class="contact-text">
                             <h3>Phone</h3>
-                            <p>+40 712 345 678</p>
+                            <p>+40 758 309 537</p>
                         </div>
                     </div>
                 </div>
-                <form class="contact-form" data-aos="fade-left">
-                    <div class="form-group">
-                        <input type="text" placeholder="Your Name" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" placeholder="Your Email" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" placeholder="Subject">
-                    </div>
-                    <div class="form-group">
-                        <textarea placeholder="Your Message" required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Send Message</button>
-                </form>
             </div>
         </div>
     </section>
@@ -259,13 +308,10 @@
     <footer class="footer">
         <div class="container">
             <div class="social-links">
-                <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                <a href="#" class=""><i class="fab fa-facebook-f"></i></a>
                 <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
-                <a href="#" class="social-link"><i class="fab fa-github"></i></a>
             </div>
-            <p class="copyright">&copy; 2025 AuraScan. A website designed and developed by MADMEDIA Development. All rights reserved.</p>
+            <p class="copyright">&copy; 2025 AnKaScan. A website designed and developed by MADMEDIA Development. All rights reserved.</p>
         </div>
     </footer>
 
@@ -337,6 +383,114 @@
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             });
         }
+
+        // Image Upload and Preview Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const dropArea = document.getElementById('dropArea');
+            const fileInput = document.getElementById('poza');
+            const preview = document.getElementById('preview');
+
+            // Prevent default drag behaviors
+            ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+                dropArea.addEventListener(eventName, preventDefaults, false);
+                document.body.addEventListener(eventName, preventDefaults, false);
+            });
+
+            // Highlight drop area when item is dragged over it
+            ['dragenter', 'dragover'].forEach(eventName => {
+                dropArea.addEventListener(eventName, highlight, false);
+            });
+
+            ['dragleave', 'drop'].forEach(eventName => {
+                dropArea.addEventListener(eventName, unhighlight, false);
+            });
+
+            // Handle dropped files
+            dropArea.addEventListener('drop', handleDrop, false);
+            
+            // Handle file selection via input
+            fileInput.addEventListener('change', handleFiles, false);
+
+            function preventDefaults(e) {
+                e.preventDefault();
+                e.stopPropagation();
+            }
+
+            function highlight() {
+                dropArea.classList.add('highlight');
+            }
+
+            function unhighlight() {
+                dropArea.classList.remove('highlight');
+            }
+
+            function handleDrop(e) {
+                const dt = e.dataTransfer;
+                const files = dt.files;
+                handleFiles({ target: { files } });
+            }
+
+            function handleFiles(e) {
+                const files = e.target.files;
+                if (files.length > 0) {
+                    const file = files[0];
+                    
+                    // Check if the file is an image
+                    if (!file.type.match('image.*')) {
+                        alert('Vă rugăm să încărcați doar imagini!');
+                        return;
+                    }
+
+                    // Check file size (max 5MB)
+                    if (file.size > 5 * 1024 * 1024) {
+                        alert('Dimensiunea maximă permisă este de 5MB!');
+                        return;
+                    }
+
+                    const reader = new FileReader();
+                    
+                    reader.onload = function(e) {
+                        // Clear previous preview
+                        preview.innerHTML = '';
+                        
+                        // Create image element
+                        const img = document.createElement('img');
+                        img.src = e.target.result;
+                        img.style.maxWidth = '100%';
+                        img.style.maxHeight = '200px';
+                        img.style.marginTop = '15px';
+                        img.style.borderRadius = '8px';
+                        
+                        // Add remove button
+                        const removeBtn = document.createElement('button');
+                        removeBtn.textContent = 'Șterge imaginea';
+                        removeBtn.style.display = 'block';
+                        removeBtn.style.marginTop = '10px';
+                        removeBtn.style.padding = '8px 15px';
+                        removeBtn.style.backgroundColor = '#ff4d4d';
+                        removeBtn.style.color = 'white';
+                        removeBtn.style.border = 'none';
+                        removeBtn.style.borderRadius = '4px';
+                        removeBtn.style.cursor = 'pointer';
+                        removeBtn.onclick = function() {
+                            preview.innerHTML = '';
+                            fileInput.value = '';
+                        };
+                        
+                        preview.appendChild(img);
+                        preview.appendChild(removeBtn);
+                        
+                        // Update drop area text
+                        const dropText = dropArea.querySelector('p');
+                        if (dropText) {
+                            dropText.textContent = 'Imagine încărcată: ' + file.name;
+                        }
+                    };
+                    
+                    reader.readAsDataURL(file);
+                }
+            }
+        });
     </script>
 </body>
 </html>
